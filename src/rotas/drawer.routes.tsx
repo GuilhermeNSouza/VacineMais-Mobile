@@ -4,7 +4,7 @@ import { EvilIcons } from '@expo/vector-icons';
 
 import TabRoutes from './tab.routes'
 import Perfil from '../paginas/perfil'
-import Configurações from '../paginas/configurações'
+import Configurações from '../paginas/configs'
 
 const Drawer = createDrawerNavigator()
 

@@ -3,26 +3,41 @@ import TabRoutes from './tab.routes'
 import Perfil from '../paginas/perfil'
 import Routes from '.'
 import Home from '../paginas/home'
-import Começo from '../paginas/começo'
+import Inicio from '../paginas/inicio'
 import Login from '../paginas/login'
 import DrawerRoutes from './drawer.routes'
+import Cadastro from '../paginas/cadastro'
 
-const Stack = createNativeStackNavigator()
-
+export type RootStackParamList = {
+    Inicio: undefined;
+    Login: undefined;
+    Gambiarra: undefined;
+    Cadastro: undefined;
+    Perfil: undefined;
+};
+const Stack = createNativeStackNavigator<RootStackParamList>()
 export default function StackRoutes(){
     return(
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen
-            name='Começo'
-            component={Começo}
+            name='Inicio'
+            component={Inicio}
             />
             <Stack.Screen
             name='Login'
             component={Login}
             />
             <Stack.Screen
+            name='Cadastro'
+               component={Cadastro}
+            />
+            <Stack.Screen
             name='Gambiarra'
             component={DrawerRoutes}
+            />
+            <Stack.Screen
+            name='Perfil'
+            component={Perfil}
             />
         </Stack.Navigator>
     )

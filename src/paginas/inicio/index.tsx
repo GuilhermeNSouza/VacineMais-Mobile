@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from "@react-navigation/native"
-import StackRoutes from '../../rotas/stack.routes';
+import StackRoutes, { RootStackParamList } from '../../rotas/stack.routes';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const windowWidth = Dimensions.get('window').width;
 const logoWidth = windowWidth * 0.5;
 
 export default function Começo() {
-    const navigation = useNavigation()
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
     <View style={styles.container}>
@@ -28,6 +29,7 @@ export default function Começo() {
             <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Login')}>
                 <Text style={styles.buttonText}>Acessar</Text>
             </TouchableOpacity>
+
         </Animatable.View>
     </View>
   );
