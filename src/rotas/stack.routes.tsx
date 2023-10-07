@@ -7,6 +7,7 @@ import Inicio from '../paginas/inicio'
 import Login from '../paginas/login'
 import DrawerRoutes from './drawer.routes'
 import Cadastro from '../paginas/cadastro'
+import Comprovante from '../paginas/comprovante'
 
 export type RootStackParamList = {
     Inicio: undefined;
@@ -14,6 +15,7 @@ export type RootStackParamList = {
     Gambiarra: undefined;
     Cadastro: undefined;
     Perfil: undefined;
+    Comprovante: undefined;
 };
 const Stack = createNativeStackNavigator<RootStackParamList>()
 export default function StackRoutes(){
@@ -38,6 +40,10 @@ export default function StackRoutes(){
             <Stack.Screen
             name='Perfil'
             component={Perfil}
+            />
+            <Stack.Screen
+            name='Comprovante'
+            component={Comprovante}
             />
         </Stack.Navigator>
     )
