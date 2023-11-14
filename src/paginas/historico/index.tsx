@@ -1,24 +1,48 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from "@react-navigation/native"
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../rotas/stack.routes';
+import React, { useState } from 'react';
 
 export default function Login() {
-
+  const windowWidth = Dimensions.get('window').width;
+  const logoWidth = windowWidth * 0.5;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <View style={styles.container}>
+            
       <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Histórico de Vacinas</Text>
       </Animatable.View>
 
     <Animatable.View animation='fadeInUp' style={styles.containerForm}>
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Comprovante')}>
-          <Text style={styles.buttonText}>Acessar</Text>
+        {/* <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Comprovante')}>
+          <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
+        </TouchableOpacity> */}
+        {/* <Animatable.Image
+              animation='flipInY'
+              source={require('../../images/EXPORTARPDF.png')}
+              style={{ width: '25%', height: logoWidth * 0.3, marginLeft: 300, marginTop: 7 }}
+              resizeMode='contain'
+            /> */}
+        <TouchableOpacity style={styles.buttontest} onPress={ () => navigation.navigate('Comprovante')}>
+          <Image
+              source={require('../../images/EXPORTARPDF.png')}
+              style={{ width: '25%', height: logoWidth * 0.3, marginLeft: 300, marginTop: 7 }}
+              resizeMode='contain'
+            />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Hepatite | 01/09/1987</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Influenza | 19/03/1998</Text>
         </TouchableOpacity>
     </Animatable.View>
-
     </View>
   );
 }
@@ -65,6 +89,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  buttontest: {
+    backgroundColor: '#fff',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   buttonText: {
     color: '#fff',
     fontSize: 18,
@@ -76,5 +106,10 @@ const styles = StyleSheet.create({
   },
   registerText: {
     color: '#a1a1a1'
+  },
+  headerImage: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
   }
 });
