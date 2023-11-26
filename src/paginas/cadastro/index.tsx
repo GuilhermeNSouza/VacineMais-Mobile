@@ -23,6 +23,12 @@ export default function Cadastro() {
           style={styles.input}
         />
 
+        <Text style={styles.title}>Sobrenome</Text>
+        <TextInput
+          placeholder="Digite seu Nome..."
+          style={styles.input}
+        />
+
         <Text style={styles.title}>Email</Text>
         <TextInput
           placeholder="Digite seu Email..."
@@ -35,7 +41,7 @@ export default function Cadastro() {
           style={styles.input}
         />
 
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Gambiarra')}>
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Noticias')}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
 

@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
   containerForm: {
     flex: 1.5,
     backgroundColor: '#fff',
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    paddingStart: '5%',
-    paddingEnd: '5%'
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    paddingStart: '3%',
+    paddingEnd: '3%'
 
   },
   title: {

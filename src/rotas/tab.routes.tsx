@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Feather } from '@expo/vector-icons'
 
-import Home from '../paginas/home'
+import Homescreen from '../paginas/home'
 import Historico from '../paginas/historico'
 import Noticias from '../paginas/noticias'
 
@@ -18,13 +18,12 @@ export default function TabRoutes(){
             tabBarLabel: 'Noticias'
         }}
         />
-         
         <Tab.Screen
-        name= 'Home'
-        component={Home}
+        name= 'Homescreen'
+        component={Homescreen}
         options={{
             tabBarIcon: ({ color, size }) => <Feather name='home' size={size} color={color}/>,
-            tabBarLabel: 'Inicio'
+            tabBarLabel: 'Home'
         }}
         />
 

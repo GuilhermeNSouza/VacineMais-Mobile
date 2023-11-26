@@ -1,41 +1,32 @@
+import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from "@react-navigation/native"
+import StackRoutes, { RootStackParamList } from '../../rotas/stack.routes';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../rotas/stack.routes';
-import React, { useState } from 'react';
 
-export default function Login() {
-  const windowWidth = Dimensions.get('window').width;
-  const logoWidth = windowWidth * 0.5;
+const windowWidth = Dimensions.get('window').width;
+const logoWidth = windowWidth * 0.5;
+
+export default function Homescreen() {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   return (
     <View style={styles.container}>
-            
-      <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
-        <Text style={styles.message}>Tela de Início</Text>
-      </Animatable.View>
-
-    <Animatable.View animation='fadeInUp' style={styles.containerForm}>
-        {/* <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Comprovante')}>
-          <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
-        </TouchableOpacity> */}
-        {/* <Animatable.Image
-              animation='flipInY'
-              source={require('../../images/EXPORTARPDF.png')}
-              style={{ width: '25%', height: logoWidth * 0.3, marginLeft: 300, marginTop: 7 }}
+        <View  style={styles.containerLogo}>
+            <Animatable.Image
+              animation='fadeInUp'
+              source={require('../../images/DALLE_CARTAO-removebg-preview.png')}
+              style={{ width: '95%', height: logoWidth * 1.5 }}
               resizeMode='contain'
-            /> */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Hepatite | 01/09/1987</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Influenza | 19/03/1998</Text>
-        </TouchableOpacity>
-    </Animatable.View>
+            />
+        </View>
+
+        <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
+            <Text style={styles.title}>Bem vindo senhor (a)!</Text>
+            <Text style={styles.text}>Acesse aqui seu cartão</Text>
+
+        </Animatable.View>
     </View>
   );
 }
@@ -45,64 +36,45 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#04364A',
   },
-  containerHeader:{
-    marginTop: '14%',
-    marginBottom: '8%',
-    paddingStart: '5%',
+  containerLogo: {
+    flex: 1.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#04364A',
   },
-  message: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#fff'
-  },
-  containerForm:{
+  containerForm: {
+    flex: 2.5,
     backgroundColor: '#fff',
-    flex: 1,
-    borderTopLeftRadius:25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
     paddingStart: '5%',
-    paddingEnd: '5%',
+    paddingEnd: '5%'
+
   },
   title: {
-    fontSize: 20,
-    marginTop: 28
-  },
-  input: {
-    borderBottomWidth: 1,
-    height:40,
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 28,
     marginBottom: 12,
-    fontSize: 16
+  },
+  text: {
+    color: '#a1a1a1',
   },
   button: {
+    position: 'absolute',
     backgroundColor: '#04364A',
-    width: '100%',
-    borderRadius: 4,
-    paddingVertical:8,
-    marginTop: 14,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttontest: {
-    backgroundColor: '#fff',
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
+    borderRadius: 50,
+    paddingVertical: 8,
+    width: '70%',
+    height: '15%',
+    alignSelf: 'center',
+    bottom: '25%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   buttonText: {
-    color: '#fff',
+    color: 'white',
+    fontWeight: 'bold',
     fontSize: 18,
-    fontWeight: 'bold'
   },
-  buttonRegister: {
-    marginTop: 14,
-    alignSelf: 'center'
-  },
-  registerText: {
-    color: '#a1a1a1'
-  },
-  headerImage: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
-  }
 });

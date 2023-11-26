@@ -2,20 +2,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import TabRoutes from './tab.routes'
 import Perfil from '../paginas/perfil'
 import Routes from '.'
-import Home from '../paginas/home'
+import Homescreen from '../paginas/home'
 import Inicio from '../paginas/inicio'
 import Login from '../paginas/login'
 import DrawerRoutes from './drawer.routes'
 import Cadastro from '../paginas/cadastro'
-import Comprovante from '../paginas/comprovante'
+import ImageModal from '../paginas/comprovante'
+import Historico from '../paginas/historico'
 
 export type RootStackParamList = {
     Inicio: undefined;
     Login: undefined;
-    Gambiarra: undefined;
+    Homescreen: undefined;
+    Noticias: undefined;
     Cadastro: undefined;
     Perfil: undefined;
-    Comprovante: undefined;
+    ImageModal: undefined;
+    Historico: undefined;
 };
 const Stack = createNativeStackNavigator<RootStackParamList>()
 export default function StackRoutes(){
@@ -30,11 +33,15 @@ export default function StackRoutes(){
             component={Login}
             />
             <Stack.Screen
+            name='Homescreen'
+            component={Homescreen}
+            />
+            <Stack.Screen
             name='Cadastro'
                component={Cadastro}
             />
             <Stack.Screen
-            name='Gambiarra'
+            name='Noticias'
             component={DrawerRoutes}
             />
             <Stack.Screen
@@ -42,8 +49,12 @@ export default function StackRoutes(){
             component={Perfil}
             />
             <Stack.Screen
-            name='Comprovante'
-            component={Comprovante}
+            name='ImageModal'
+            component={ImageModal}
+            />
+            <Stack.Screen
+            name='Historico'
+            component={Historico}
             />
         </Stack.Navigator>
     )

@@ -20,7 +20,7 @@ export default function DrawerRoutes(){
             }}
             />
             <Drawer.Screen
-            name='perfil'
+            name='Perfil'
             component={Perfil}
             options={{
                 drawerIcon: ({ color, size }) => <Feather name='user' size={size} color={color}/>,
@@ -28,7 +28,7 @@ export default function DrawerRoutes(){
             }}
             />
             <Drawer.Screen
-            name='configurações'
+            name='Configurações'
             component={Configurações}
             options={{
                 drawerIcon: ({ color, size }) => <Feather name='edit' size={size} color={color}/>,

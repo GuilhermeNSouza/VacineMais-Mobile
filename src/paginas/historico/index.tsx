@@ -1,37 +1,33 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import * as Animatable from 'react-native-animatable'
-import { useNavigation } from "@react-navigation/native"
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../rotas/stack.routes';
-import React, { useState } from 'react';
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions} from 'react-native';
+import { RootStackParamList } from "../../rotas/stack.routes";
+import * as Animatable from 'react-native-animatable';
+import React, { useState } from "react";
+import ImageModal from '../comprovante/index'
 
-export default function Login() {
+export default function Historico() {
   const windowWidth = Dimensions.get('window').width;
   const logoWidth = windowWidth * 0.5;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
   return (
     <View style={styles.container}>
             
       <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Histórico de Vacinas</Text>
       </Animatable.View>
-
-    <Animatable.View animation='fadeInUp' style={styles.containerForm}>
-        {/* <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Comprovante')}>
-          <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
-        </TouchableOpacity> */}
-        {/* <Animatable.Image
-              animation='flipInY'
-              source={require('../../images/EXPORTARPDF.png')}
-              style={{ width: '25%', height: logoWidth * 0.3, marginLeft: 300, marginTop: 7 }}
-              resizeMode='contain'
-            /> */}
-        <TouchableOpacity style={styles.buttontest} onPress={ () => navigation.navigate('Comprovante')}>
+      <Animatable.View animation='fadeInUp' style={styles.containerForm}>
+        <TouchableOpacity style={styles.buttontest} onPress={toggleModal}>
           <Image
-              source={require('../../images/EXPORTARPDF.png')}
-              style={{ width: '25%', height: logoWidth * 0.3, marginLeft: 300, marginTop: 7 }}
-              resizeMode='contain'
-            />
+            source={require('../../images/EXPORTARPDF.png')}
+            style={{ width: '25%', height: logoWidth * 0.3, marginLeft: 300, marginTop: 7 }}
+            resizeMode='contain'
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
@@ -43,6 +39,15 @@ export default function Login() {
           <Text style={styles.buttonText}>Influenza | 19/03/1998</Text>
         </TouchableOpacity>
     </Animatable.View>
+      <ImageModal imageUrl={require('../../images/Carteira_Nacional_de_Vacinacao_Digital_page-0001.jpg')} visible={isModalVisible}
+      onClose={toggleModal}
+      onAction1={() => {
+        // Lógica para ação 1
+      }}
+      onAction2={() => {
+        // Lógica para ação 2
+      }}
+      />
     </View>
   );
 }
@@ -65,10 +70,10 @@ const styles = StyleSheet.create({
   containerForm:{
     backgroundColor: '#fff',
     flex: 1,
-    borderTopLeftRadius:25,
-    borderTopRightRadius: 25,
-    paddingStart: '5%',
-    paddingEnd: '5%',
+    borderTopLeftRadius:15,
+    borderTopRightRadius: 15,
+    paddingStart: '3%',
+    paddingEnd: '3%',
   },
   title: {
     fontSize: 20,
@@ -93,7 +98,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 0,
+    margin: 0,
   },
   buttonText: {
     color: '#fff',

@@ -26,7 +26,7 @@ export default function Login() {
           style={styles.input}
         />
 
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Gambiarra')}>
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Noticias')}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
 
