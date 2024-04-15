@@ -1,27 +1,40 @@
+// Importa os hooks necessários do React Navigation, componentes do React Native,
+// o tipo de navegação para pilha e o tipo de parâmetros da rota
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions} from 'react-native';
 import { RootStackParamList } from "../../rotas/stack.routes";
 import * as Animatable from 'react-native-animatable';
 import React, { useState } from "react";
-import ImageModal from '../comprovante/index'
+import ImageModal from '../comprovante/index';
 
+// Define a função `Historico` como o componente exportado por padrão.
 export default function Historico() {
+  // Obtém a largura da janela
   const windowWidth = Dimensions.get('window').width;
+  // Calcula a largura do logo
   const logoWidth = windowWidth * 0.5;
+  // Hook para navegação
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  // Estado para controlar a visibilidade do modal
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  // Função para alternar a visibilidade do modal
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
+
   return (
+    // Componente de contêiner principal
     <View style={styles.container}>
-            
+      {/* Animatable View para o cabeçalho */}
       <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Histórico de Vacinas</Text>
       </Animatable.View>
+
+      {/* Animatable View para o formulário */}
       <Animatable.View animation='fadeInUp' style={styles.containerForm}>
+        {/* Botão para exportar PDF */}
         <TouchableOpacity style={styles.buttontest} onPress={toggleModal}>
           <Image
             source={require('../../images/EXPORTARPDF.png')}
@@ -29,6 +42,8 @@ export default function Historico() {
             resizeMode='contain'
           />
         </TouchableOpacity>
+
+        {/* Botões para cada vacina */}
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Covid-19/Butantan | 02/02/2022</Text>
         </TouchableOpacity>
@@ -38,20 +53,25 @@ export default function Historico() {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Influenza | 19/03/1998</Text>
         </TouchableOpacity>
-    </Animatable.View>
-      <ImageModal imageUrl={require('../../images/Carteira_Nacional_de_Vacinacao_Digital_page-0001.jpg')} visible={isModalVisible}
-      onClose={toggleModal}
-      onAction1={() => {
-        // Lógica para ação 1
-      }}
-      onAction2={() => {
-        // Lógica para ação 2
-      }}
+      </Animatable.View>
+
+      {/* Modal de imagem */}
+      <ImageModal
+        imageUrl={require('../../images/Carteira_Nacional_de_Vacinacao_Digital_page-0001.jpg')}
+        visible={isModalVisible}
+        onClose={toggleModal}
+        onAction1={() => {
+          // Lógica para ação 1
+        }}
+        onAction2={() => {
+          // Lógica para ação 2
+        }}
       />
     </View>
   );
 }
 
+// Estilos para os componentes
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -75,16 +95,6 @@ const styles = StyleSheet.create({
     paddingStart: '3%',
     paddingEnd: '3%',
   },
-  title: {
-    fontSize: 20,
-    marginTop: 28
-  },
-  input: {
-    borderBottomWidth: 1,
-    height:40,
-    marginBottom: 12,
-    fontSize: 16
-  },
   button: {
     backgroundColor: '#04364A',
     width: '100%',
@@ -107,16 +117,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   },
-  buttonRegister: {
-    marginTop: 14,
-    alignSelf: 'center'
-  },
-  registerText: {
-    color: '#a1a1a1'
-  },
-  headerImage: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
-  }
 });

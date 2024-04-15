@@ -1,52 +1,59 @@
+// Importa os componentes necessários do React Native e da navegação
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions,  } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { RootStackParamList } from "../../rotas/stack.routes";
 import * as Animatable from 'react-native-animatable';
 
-
+// Define a função `Noticias` como o componente exportado por padrão.
 export default function Noticias() {
+  // Obtém a largura da janela e calcula a largura do logo
   const windowWidth = Dimensions.get('window').width;
   const logoWidth = windowWidth * 0.5;
+  // Hook para navegação
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   return (
+    // Componente de contêiner principal
     <View style={styles.container}>
-            
+      {/* Animatable View para o cabeçalho */}
       <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Notícias</Text>
       </Animatable.View>
 
-    <Animatable.View animation='fadeInUp' style={styles.containerForm}>
+      {/* Animatable View para o conteúdo */}
+      <Animatable.View animation='fadeInUp' style={styles.containerForm}>
+        {/* Botões de notícia */}
         <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Conheça a utilização do seu cartão no aplicativo!</Text>
+          <Text style={styles.buttonText}>Conheça a utilização do seu cartão no aplicativo!</Text>
           <Image
-              source={require('../../images/CARTAO_SUS_FOTO_KLEIDE_TEIXEIRA_11-scaled-removebg-preview.png')}
-              style={{ width: '100%', height: logoWidth * 1, marginLeft: 1, marginTop: 1 }}
-              resizeMode='contain'
-            />
+            source={require('../../images/CARTAO_SUS_FOTO_KLEIDE_TEIXEIRA_11-scaled-removebg-preview.png')}
+            style={{ width: '100%', height: logoWidth * 1, marginLeft: 1, marginTop: 1 }}
+            resizeMode='contain'
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Novos estoques estão chegando a sua região!</Text>
+          <Text style={styles.buttonText}>Novos estoques estão chegando a sua região!</Text>
           <Image
-              source={require('../../images/vacina-removebg-preview.png')}
-              style={{ width: '100%', height: logoWidth * 1, marginLeft: 1, marginTop: 1 }}
-              resizeMode='contain'
-            />
+            source={require('../../images/vacina-removebg-preview.png')}
+            style={{ width: '100%', height: logoWidth * 1, marginLeft: 1, marginTop: 1 }}
+            resizeMode='contain'
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Obrigatoriedade de vacinas é alvo de debate no senado.</Text>
+          <Text style={styles.buttonText}>Obrigatoriedade de vacinas é alvo de debate no senado.</Text>
           <Image
-              source={require('../../images/t_camara-removebg-preview.png')}
-              style={{ width: '100%', height: logoWidth * 1, marginLeft: 1, marginTop: 1 }}
-              resizeMode='contain'
-            />
+            source={require('../../images/t_camara-removebg-preview.png')}
+            style={{ width: '100%', height: logoWidth * 1, marginLeft: 1, marginTop: 1 }}
+            resizeMode='contain'
+          />
         </TouchableOpacity>
-
-    </Animatable.View>
+      </Animatable.View>
     </View>
   );
 }
 
+// Estilos para os componentes
 const styles = StyleSheet.create({
   container: {
     flex: 1,

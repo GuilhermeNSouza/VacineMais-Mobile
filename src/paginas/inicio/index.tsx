@@ -1,40 +1,49 @@
+// Importa os componentes necessários do React Native
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
-import * as Animatable from 'react-native-animatable'
-import { useNavigation } from "@react-navigation/native"
-import StackRoutes, { RootStackParamList } from '../../rotas/stack.routes';
-import { StackNavigationProp } from '@react-navigation/stack';
+import * as Animatable from 'react-native-animatable'; // Importa a biblioteca para animações
+import { useNavigation } from "@react-navigation/native"; // Importa o hook para navegação
+import { StackNavigationProp } from '@react-navigation/stack'; // Importa o tipo de navegação para pilha
+import { RootStackParamList } from '../../rotas/stack.routes'; // Importa o tipo de parâmetros da rota
 
+// Obtém a largura da janela e calcula a largura do logo
 const windowWidth = Dimensions.get('window').width;
 const logoWidth = windowWidth * 0.5;
 
+// Define a função `Começo` como o componente exportado por padrão.
 export default function Começo() {
+  // Hook para navegação
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
+    // Componente de contêiner principal
     <View style={styles.container}>
-        <View  style={styles.containerLogo}>
-            <Animatable.Image
-              animation='flipInY'
-              source={require('../../images/logo.png')}
-              style={{ width: '95%', height: logoWidth * 1 }}
-              resizeMode='contain'
-            />
-        </View>
+      {/* Contêiner para o logo */}
+      <View style={styles.containerLogo}>
+        {/* Imagem com animação de flip-in */}
+        <Animatable.Image
+          animation='flipInY'
+          source={require('../../images/logo.png')}
+          style={{ width: '95%', height: logoWidth * 1 }}
+          resizeMode='contain'
+        />
+      </View>
 
-        <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
-            <Text style={styles.title}>Monitore e organize suas vacinas de qualquer lugar!</Text>
-            <Text style={styles.text}>Faça login para começar</Text>
+      {/* Contêiner para o texto de boas-vindas */}
+      <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
+        <Text style={styles.title}>Monitore e organize suas vacinas de qualquer lugar!</Text>
+        <Text style={styles.text}>Faça login para começar</Text>
 
-            <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Login')}>
-                <Text style={styles.buttonText}>Acessar</Text>
-            </TouchableOpacity>
-
-        </Animatable.View>
+        {/* Botão de acesso */}
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Login')}>
+          <Text style={styles.buttonText}>Acessar</Text>
+        </TouchableOpacity>
+      </Animatable.View>
     </View>
   );
 }
 
+// Estilos para os componentes
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -53,7 +62,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     paddingStart: '3%',
     paddingEnd: '3%'
-
   },
   title: {
     fontSize: 24,

@@ -1,40 +1,54 @@
+// Importa os componentes necessários do React Native
 import React from 'react';
 import { Modal, Image, StyleSheet, Dimensions, View, TouchableOpacity, Text, GestureResponderEvent } from 'react-native';
 
+// Define os tipos das propriedades do componente
 interface ImageModalProps {
-  imageUrl: any;
-  visible: boolean;
-  onClose: () => void;
-  onAction1: () => void; // Ação do primeiro botão
-  onAction2: () => void; // Ação do segundo botão
+  imageUrl: any; // URL da imagem a ser exibida
+  visible: boolean; // Indica se o modal está visível ou não
+  onClose: () => void; // Função para fechar o modal
+  onAction1: () => void; // Função para ação do primeiro botão
+  onAction2: () => void; // Função para ação do segundo botão
 }
 
+// Componente de Modal de Imagem
 const ImageModal: React.FC<ImageModalProps> = ({ imageUrl, visible, onClose }) => {
+  // Largura da janela
   const windowWidth = 600;
+  // Largura da imagem
   const imageWidth = windowWidth * 0.8;
 
+  // Função para ação do primeiro botão
   function onAction1(event: GestureResponderEvent): void {
     throw new Error('Function not implemented.');
   }
 
+  // Função para ação do segundo botão
   function onAction2(event: GestureResponderEvent): void {
     throw new Error('Function not implemented.');
   }
 
   return (
+    // Modal transparente
     <Modal transparent visible={visible} onRequestClose={onClose}>
+      {/* Overlay do modal */}
       <TouchableOpacity activeOpacity={1} onPress={onClose} style={styles.modalOverlay}>
         <View style={styles.modalContent}>
-        <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-        <Image source={require('../../images/211651_close_round_icon.png')} style={styles.closeButtonImage}/>
+          {/* Botão para fechar o modal */}
+          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+            <Image source={require('../../images/211651_close_round_icon.png')} style={styles.closeButtonImage}/>
           </TouchableOpacity>
+          {/* Imagem */}
           <Image source={imageUrl} style={{ width: imageWidth, height: imageWidth }} resizeMode="contain" />
+          {/* Container para os botões */}
           <View style={styles.buttonContainer}>
+            {/* Botão 1 */}
             <TouchableOpacity onPress={onAction1} style={styles.button}>
-            <Image source={require('../../images/326639_download_file_icon.png')} style={styles.ButtonImage}/>
+              <Image source={require('../../images/326639_download_file_icon.png')} style={styles.ButtonImage}/>
             </TouchableOpacity>
+            {/* Botão 2 */}
             <TouchableOpacity onPress={onAction2} style={styles.button}>
-            <Image source={require('../../images/9035090_share_social_icon.png')} style={styles.ButtonImage}/>
+              <Image source={require('../../images/9035090_share_social_icon.png')} style={styles.ButtonImage}/>
             </TouchableOpacity>
           </View>
         </View>
@@ -43,6 +57,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ imageUrl, visible, onClose }) =
   );
 };
 
+// Estilos para os componentes
 const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
@@ -54,23 +69,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 8,
     padding: 34,
-  },
-  modalBackground: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  imageContainer: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    width: 300,
-    height: 300,
   },
   closeButton: {
     position: 'absolute',
@@ -97,4 +95,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageModal;
+export default ImageModal; // Exporta o componente
