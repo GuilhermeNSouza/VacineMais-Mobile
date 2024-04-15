@@ -19,7 +19,7 @@ export default function Homescreen() {
   const userInfo = {
     name: "John Doe",
     email: "john.doe@example.com",
-    cpf: "05796723104",
+    cpf: "123.456.789-00",
     avatar: require('../../images/user_avatar.png') // Adicione a imagem do avatar do usuário
   };
 

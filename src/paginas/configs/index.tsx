@@ -1,31 +1,81 @@
-// Importa o componente `StatusBar` do pacote 'expo-status-bar'
-// e os componentes `StyleSheet`, `Text` e `View` do React Native.
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
-// Define a função `Configurações` como o componente exportado por padrão.
-export default function Configurações() {
+export default function Configuracoes() {
   return (
-    // Retorna um componente `View` que representa a tela de configurações.
     <View style={styles.container}>
-      // Inclui um componente `Text` com o texto "Tela de Configurações".
-      <Text> Tela de Configurações </Text>
-      // Adiciona o componente `StatusBar` para controlar a barra de status.
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Configurações</Text>
+      </View>
+      <View style={styles.optionsContainer}>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="account-circle" size={24} color="black" />
+          <Text style={styles.optionText}>Perfil</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="notifications" size={24} color="black" />
+          <Text style={styles.optionText}>Notificações</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="language" size={24} color="black" />
+          <Text style={styles.optionText}>Idioma</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="security" size={24} color="black" />
+          <Text style={styles.optionText}>Segurança</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="help" size={24} color="black" />
+          <Text style={styles.optionText}>Ajuda</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="sync" size={24} color="black" />
+          <Text style={styles.optionText}>Sincronização</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="brightness-6" size={24} color="black" />
+          <Text style={styles.optionText}>Modo Escuro</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.option}>
+          <MaterialIcons name="accessibility" size={24} color="black" />
+          <Text style={styles.optionText}>Acessibilidade</Text>
+        </TouchableOpacity>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
 }
 
-// Define estilos usando a função `StyleSheet.create`.
 const styles = StyleSheet.create({
   container: {
-    // Define a flexibilidade do contêiner como 1, permitindo que ele ocupe todo o espaço disponível.
     flex: 1,
-    // Define a cor de fundo do contêiner como branco.
     backgroundColor: '#fff',
-    // Alinha os itens filhos centralmente ao longo do eixo principal (verticalmente).
+  },
+  header: {
+    backgroundColor: '#04364A',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+  },
+  headerText: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  optionsContainer: {
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
+  option: {
+    flexDirection: 'row',
     alignItems: 'center',
-    // Justifica os itens filhos centralmente ao longo do eixo transversal (horizontalmente).
-    justifyContent: 'center',
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  optionText: {
+    marginLeft: 15,
+    fontSize: 18,
   },
 });
