@@ -4,6 +4,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { RootStackParamList } from "../../rotas/stack.routes";
 import * as Animatable from 'react-native-animatable';
+import { ScrollView } from "react-native-gesture-handler";
 
 // Define a função `Noticias` como o componente exportado por padrão.
 export default function Noticias() {
@@ -20,8 +21,9 @@ export default function Noticias() {
       <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
         <Text style={styles.message}>Notícias</Text>
       </Animatable.View>
-
+    
       {/* Animatable View para o conteúdo */}
+    <ScrollView contentContainerStyle={styles.scrollViewContent}>  
       <Animatable.View animation='fadeInUp' style={styles.containerForm}>
         {/* Botões de notícia */}
         <TouchableOpacity style={styles.button}>
@@ -49,6 +51,7 @@ export default function Noticias() {
           />
         </TouchableOpacity>
       </Animatable.View>
+    </ScrollView>
     </View>
   );
 }
@@ -63,60 +66,40 @@ const styles = StyleSheet.create({
     marginTop: '5%',
     marginBottom: '8%',
     paddingStart: '5%',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    paddingBottom: 10,
   },
   message: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff'
+    color: '#fff',
+    textAlign: 'left', // Centralize o texto
   },
   containerForm:{
-    backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5', // Altere a cor de fundo para um tom mais claro
     flex: 1,
-    borderTopLeftRadius:15,
+    borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     paddingStart: '3%',
     paddingEnd: '3%',
-  },
-  title: {
-    fontSize: 20,
-    marginTop: 28
-  },
-  input: {
-    borderBottomWidth: 1,
-    height:40,
-    marginBottom: 12,
-    fontSize: 16
+    paddingTop: 10, // Adicione um espaçamento superior
   },
   button: {
-    backgroundColor: '#04364A',
+    backgroundColor: '#04364A', // Aplique uma cor mais vibrante aos botões
     width: '100%',
-    borderRadius: 4,
-    paddingVertical:8,
+    borderRadius: 8, // Aumente o raio da borda para um visual mais arredondado
+    paddingVertical: 12, // Aumente o preenchimento vertical para melhorar a usabilidade
     marginTop: 14,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttontest: {
-    backgroundColor: '#fff',
-    width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
   },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 16, // Reduza um pouco o tamanho do texto
     fontWeight: 'bold'
   },
-  buttonRegister: {
-    marginTop: 14,
-    alignSelf: 'center'
+  scrollViewContent: {
+    flexGrow: 1,
   },
-  registerText: {
-    color: '#a1a1a1'
-  },
-  headerImage: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
-  }
 });

@@ -5,38 +5,44 @@ import * as Animatable from 'react-native-animatable'; // Importa a biblioteca p
 import { useNavigation } from "@react-navigation/native"; // Importa o hook para navegação
 import { StackNavigationProp } from '@react-navigation/stack'; // Importa o tipo de navegação para pilha
 import { RootStackParamList } from '../../rotas/stack.routes'; // Importa o tipo de parâmetros da rota
+import { FontAwesome } from '@expo/vector-icons'; // Importa o ícone de usuário
 
 // Obtém a largura da janela e calcula a largura do logo
 const windowWidth = Dimensions.get('window').width;
-const logoWidth = windowWidth * 0.5;
 
 // Define a função `Homescreen` como o componente exportado por padrão.
 export default function Homescreen() {
   // Hook para navegação
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
+  // Informações do usuário (fictícias)
+  const userInfo = {
+    name: "John Doe",
+    email: "john.doe@example.com",
+    cpf: "05796723104",
+    avatar: require('../../images/user_avatar.png') // Adicione a imagem do avatar do usuário
+  };
+
   return (
     // Componente de contêiner principal
     <View style={styles.container}>
-      {/* Contêiner para o logo */}
-      <View style={styles.containerLogo}>
-        {/* Imagem com animação de fade-in */}
-        <Animatable.Image
-          animation='fadeInUp'
-          source={require('../../images/DALLE_CARTAO-removebg-preview.png')}
-          style={{ width: '95%', height: logoWidth * 1.5 }}
-          resizeMode='contain'
-        />
-      </View>
+      <Animatable.View animation='fadeInDown' style={styles.containerUserInfo}>
+        <Animatable.Image source={userInfo.avatar} style={styles.avatar} animation='zoomIn' />
+        <View style={styles.userInfoContainer}>
+          <Animatable.Text animation='fadeInRight' style={styles.userInfoText}>Nome: {userInfo.name}</Animatable.Text>
+          <Animatable.Text animation='fadeInRight' style={styles.userInfoText}>E-mail: {userInfo.email}</Animatable.Text>
+          <Animatable.Text animation='fadeInRight' style={styles.userInfoText}>CPF: {userInfo.cpf}</Animatable.Text>
+        </View>
+      </Animatable.View>
 
-      {/* Contêiner para o texto de boas-vindas */}
       <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
-        <Text style={styles.title}>Bem vindo senhor (a)!</Text>
+        <Text style={styles.title}>Bem vindo, {userInfo.name}!</Text>
         <Text style={styles.text}>Acesse aqui seu cartão</Text>
       </Animatable.View>
     </View>
   );
 }
+
 
 // Estilos para os componentes
 const styles = StyleSheet.create({
@@ -44,11 +50,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#04364A',
   },
-  containerLogo: {
-    flex: 1.5,
-    justifyContent: 'center',
-    alignItems: 'center',
+  containerUserInfo: {
+    flexDirection: 'row', // Organiza os elementos na horizontal
+    alignItems: 'center', // Alinha os itens verticalmente
     backgroundColor: '#04364A',
+    borderBottomColor: '#04364A', // Adiciona uma borda na parte inferior
+    borderBottomWidth: 2, // Largura da borda
+    paddingHorizontal: 20, // Adiciona espaço horizontal interno
+    paddingBottom: 90, // Adiciona espaço inferior interno
+    paddingTop: 90,
   },
   containerForm: {
     flex: 2.5,
@@ -66,6 +76,22 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#a1a1a1',
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginRight: 20, // Adiciona margem à direita para separar o avatar do texto
+    borderColor: '#fff',
+    borderWidth: 2,
+  },
+  userInfoContainer: {
+    flex: 1, // Ocupa o espaço disponível
+  },
+  userInfoText: {
+    fontSize: 16,
+    marginTop: 8,
+    color: '#fff', // Alteração na cor do texto
   },
   button: {
     position: 'absolute',
