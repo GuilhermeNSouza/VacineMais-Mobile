@@ -60,7 +60,7 @@ export default function Noticias() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#04364A',
+    backgroundColor: '#347A94',
   },
   containerHeader:{
     marginTop: '5%',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     textAlign: 'left', // Centralize o texto
   },
   containerForm:{
-    backgroundColor: '#F5F5F5', // Altere a cor de fundo para um tom mais claro
+    backgroundColor: '#fff', // Altere a cor de fundo para um tom mais claro
     flex: 1,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     paddingTop: 10, // Adicione um espaçamento superior
   },
   button: {
-    backgroundColor: '#04364A', // Aplique uma cor mais vibrante aos botões
+    backgroundColor: '#57AECF', // Aplique uma cor mais vibrante aos botões
     width: '100%',
     borderRadius: 8, // Aumente o raio da borda para um visual mais arredondado
     paddingVertical: 12, // Aumente o preenchimento vertical para melhorar a usabilidade
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonText: {
-    color: '#fff',
+    color: '#244357',
     fontSize: 16, // Reduza um pouco o tamanho do texto
     fontWeight: 'bold'
   },

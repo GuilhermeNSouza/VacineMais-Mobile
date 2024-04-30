@@ -17,8 +17,8 @@ export default function Homescreen() {
 
   // Informações do usuário (fictícias)
   const userInfo = {
-    name: "John Doe",
-    email: "john.doe@example.com",
+    name: "José da Silva",
+    email: "jose.silva@example.com",
     cpf: "123.456.789-00",
     avatar: require('../../images/user_avatar.png') // Adicione a imagem do avatar do usuário
   };
@@ -26,6 +26,10 @@ export default function Homescreen() {
   return (
     // Componente de contêiner principal
     <View style={styles.container}>
+      {/* Animatable View para o cabeçalho */}
+      <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
+        <Text style={styles.message}>Histórico de Vacinas</Text>
+      </Animatable.View>
       <Animatable.View animation='fadeInDown' style={styles.containerUserInfo}>
         <Animatable.Image source={userInfo.avatar} style={styles.avatar} animation='zoomIn' />
         <View style={styles.userInfoContainer}>
@@ -38,27 +42,27 @@ export default function Homescreen() {
       <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
         <Text style={styles.title}>Bem vindo, {userInfo.name}!</Text>
         <Text style={styles.text}>Acesse aqui seu cartão</Text>
+        <Image source={require('../../images/cartao_farmacia.png')} style={styles.cartaoImage} />
       </Animatable.View>
     </View>
   );
 }
 
-
 // Estilos para os componentes
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#04364A',
+    backgroundColor: '#347A94',
   },
   containerUserInfo: {
     flexDirection: 'row', // Organiza os elementos na horizontal
     alignItems: 'center', // Alinha os itens verticalmente
-    backgroundColor: '#04364A',
-    borderBottomColor: '#04364A', // Adiciona uma borda na parte inferior
+    backgroundColor: '#347A94',
+    borderBottomColor: '#347A94', // Adiciona uma borda na parte inferior
     borderBottomWidth: 2, // Largura da borda
     paddingHorizontal: 20, // Adiciona espaço horizontal interno
-    paddingBottom: 90, // Adiciona espaço inferior interno
-    paddingTop: 90,
+    paddingBottom: 60, // Adiciona espaço inferior interno
+    paddingTop: 60,
   },
   containerForm: {
     flex: 2.5,
@@ -110,4 +114,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
   },
+  cartaoImage: {
+    width: '100%', // Para garantir que a imagem ocupe toda a largura do contêiner
+    height: undefined, // Para manter a proporção da imagem
+    aspectRatio: 600 / 471, // A largura e altura original da imagem
+    marginTop: 30, // Espaçamento superior para separar a imagem do texto
+  },
+  containerHeader: {
+    marginTop: '10%',
+    paddingStart: '5%',
+  },
+  message: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#fff'
+  },  
 });

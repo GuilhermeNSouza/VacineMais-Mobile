@@ -89,7 +89,7 @@ export default function Historico() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#04364A',
+    backgroundColor: '#347A94',
   },
   containerHeader: {
     marginTop: '14%',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     paddingEnd: '3%',
   },
   button: {
-    backgroundColor: '#04364A',
+    backgroundColor: '#57AECF',
     width: '100%',
     borderRadius: 4,
     paddingVertical: 8,

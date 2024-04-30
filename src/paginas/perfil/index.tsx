@@ -63,7 +63,7 @@ export default function Perfil() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#04364A',
+    backgroundColor: '#347A94',
   },
   scrollContainer: {
     flexGrow: 1,
