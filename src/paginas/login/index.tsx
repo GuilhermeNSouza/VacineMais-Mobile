@@ -35,7 +35,7 @@ export default function Login() {
         />
 
         {/* Botão de Acesso */}
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Noticias')}>
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Homescreen')}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
 

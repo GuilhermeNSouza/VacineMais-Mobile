@@ -46,7 +46,7 @@ export default function Cadastro() {
         />
 
         {/* Botão para acessar */}
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Noticias')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Homescreen')}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
       </Animatable.View>
